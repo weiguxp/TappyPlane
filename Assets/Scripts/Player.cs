@@ -6,22 +6,46 @@ public class Player : MonoBehaviour
 	// This can be changed in the Inspector window
 	public Vector2 jumpForcel = new Vector2(0, 300);
 	public Vector2 jumpForcer = new Vector2(0, 300);
+	private float rightVelocity = 0.1f ;
+	private float leftVelocity = -0.1f ;
+	private bool directionRight = true;
+
 	// Update is called once per frame
 	void Update ()
 	{
-		// Jump
-		if (Input.GetKeyUp("left"))
+
+		//Accelerator 
+
+		if (directionRight == true)
 		{
-			rigidbody2D.velocity = Vector2.zero;
-			rigidbody2D.AddForce(jumpForcel);
+			rightVelocity = rightVelocity + 0.5f;
+			leftVelocity = (float)leftVelocity * 0.95f;
+			rigidbody2D.velocity = new Vector2(rightVelocity,0);
+			Debug.Log (rightVelocity);
+		}
+		else
+		{
+			leftVelocity = leftVelocity - 0.5f;
+			rightVelocity = (float)rightVelocity * 0.95f;
+			rigidbody2D.velocity = new Vector2(leftVelocity,0);
+			Debug.Log (rightVelocity);
 		}
 
+
+		// Left Movement
+		if (Input.GetKeyUp("left"))
+		{
+			directionRight = false;
+			if (leftVelocity > -2f){ leftVelocity = -2f ;}
+		}
+
+
 	
-		// Jump
+		// Right Movement
 		if (Input.GetKeyUp("right"))
 		{
-			rigidbody2D.velocity = Vector2.zero;
-			rigidbody2D.AddForce(jumpForcer);
+			directionRight = true;
+			if (rightVelocity < 2f) { rightVelocity = 2f ;}
 		}
 
 		// Die by being off screen
