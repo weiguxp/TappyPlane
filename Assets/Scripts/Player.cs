@@ -32,20 +32,20 @@ public class Player : MonoBehaviour
 		}
 
 
-		// Left Movement
-		if (Input.GetKeyUp("left"))
+		//Spacebar controls direction
+		if (Input.GetKeyUp("space"))
 		{
-			directionRight = false;
-			if (leftVelocity > -2f){ leftVelocity = -2f ;}
-		}
+			if (directionRight == true)
+			{
+				directionRight = false;
+				if (leftVelocity > -2f){ leftVelocity = -2f ;}
+			}
+			else
+			{
+				directionRight = true;
+				if (rightVelocity < 2f) { rightVelocity = 2f ;}
+			}
 
-
-	
-		// Right Movement
-		if (Input.GetKeyUp("right"))
-		{
-			directionRight = true;
-			if (rightVelocity < 2f) { rightVelocity = 2f ;}
 		}
 
 		// Die by being off screen
