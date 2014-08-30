@@ -9,6 +9,9 @@ public class Player : MonoBehaviour
 	private float rightVelocity = 0.1f ;
 	private float leftVelocity = -0.1f ;
 	private bool directionRight = true;
+	private float playerAcceleration = 0.4f;
+	private float playerMinVelocity = 1.5f;
+
 
 	// Update is called once per frame
 	void Update ()
@@ -18,32 +21,32 @@ public class Player : MonoBehaviour
 
 		if (directionRight == true)
 		{
-			rightVelocity = rightVelocity + 0.5f;
-			leftVelocity = (float)leftVelocity * 0.95f;
-			rigidbody2D.velocity = new Vector2(rightVelocity,0);
+			rightVelocity = rightVelocity + playerAcceleration;
+			leftVelocity = (float)leftVelocity * 0.9f;
+			rigidbody2D.velocity = new Vector2(0, rightVelocity);
 			Debug.Log (rightVelocity);
 		}
 		else
 		{
-			leftVelocity = leftVelocity - 0.5f;
-			rightVelocity = (float)rightVelocity * 0.95f;
-			rigidbody2D.velocity = new Vector2(leftVelocity,0);
+			leftVelocity = leftVelocity - playerAcceleration;
+			rightVelocity = (float)rightVelocity * 0.9f;
+			rigidbody2D.velocity = new Vector2(0, leftVelocity);
 			Debug.Log (rightVelocity);
 		}
 
 
 		//Spacebar controls direction
-		if (Input.GetKeyUp("space"))
+		if (Input.GetMouseButtonDown(0))
 		{
 			if (directionRight == true)
 			{
 				directionRight = false;
-				if (leftVelocity > -2f){ leftVelocity = -2f ;}
+				if (leftVelocity > -playerMinVelocity){ leftVelocity = -2f ;}
 			}
 			else
 			{
 				directionRight = true;
-				if (rightVelocity < 2f) { rightVelocity = 2f ;}
+				if (rightVelocity < playerMinVelocity) { rightVelocity = 2f ;}
 			}
 
 		}
