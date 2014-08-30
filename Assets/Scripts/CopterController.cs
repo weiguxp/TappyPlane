@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class Player : MonoBehaviour
+public class CopterController : MonoBehaviour
 {
 	// The force which is added when the player jumps
 	// This can be changed in the Inspector window
