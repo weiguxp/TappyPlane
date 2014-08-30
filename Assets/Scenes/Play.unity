@@ -433,7 +433,7 @@ GameObject:
   - 61: {fileID: 1430739541}
   - 114: {fileID: 1430739543}
   m_Layer: 0
-  m_Name: player
+  m_Name: Copter
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
