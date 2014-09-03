@@ -26,6 +26,9 @@ public class CopterController : MonoBehaviour
 	public int score = 0;
 	public GameObject [] AllRockPairs;
 	public GameObject ChopperObject;
+	public GameObject FinalScoreLabel;
+	public GameObject PlayStateScorePanel;
+
 
 
 	// Direction enumerator
@@ -34,7 +37,7 @@ public class CopterController : MonoBehaviour
 	void Start()
 	{
 		CS = this;
-		DontDestroyOnLoad(this);
+//		DontDestroyOnLoad(this);
 		currentState = GameState.play;
 
 		InvokeRepeating("CreateObstacle", 1f, 1.5f);
@@ -112,11 +115,15 @@ public class CopterController : MonoBehaviour
 
 		currentState = GameState.playerdeath;
 		NGUITools.SetActive (GameOverPanel, true);
+		NGUITools.SetActive (PlayStateScorePanel, false);
+		UILabel d = FinalScoreLabel.GetComponent<UILabel>();
+		d.text = score.ToString();
 	}
 
 	public void GameRestart()
 	{
-		Application.LoadLevel (Application.loadedLevel);
+		Application.LoadLevel(0);
+//		Application.LoadLevel (Application.loadedLevel);
 //		rigidbody2D.position = new Vector2 (-3.5f, 0.06f);
 //		currentState = GameState.play;
 //		rightVelocity = 0.1f ;

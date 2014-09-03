@@ -42,3 +42,11 @@ TagManager:
     userID: 0
     uniqueID: 0
     locked: 0
+  - name: BackgroundLayer
+    userID: 1
+    uniqueID: 3223273445
+    locked: 0
+  - name: Ground Layer
+    userID: 2
+    uniqueID: 1452664321
+    locked: 0
