@@ -9,6 +9,7 @@ public class Obstacle : MonoBehaviour
 	public float range = 4;
 	public bool obstaclePassed = false;
 	public static Obstacle OSC;
+	public GameObject Chopper;
 	
 	// Use this for initialization
 	void Start()
@@ -23,11 +24,12 @@ public class Obstacle : MonoBehaviour
 	{
 		if (obstaclePassed == false) 
 		{
-			if (rigidbody2D.position.x < -15.63)
+			if (rigidbody2D.position.x < -14.80)
 			{
 //				Debug.Log(rigidbody2D.position.x);
 				obstaclePassed = true;
-				CopterController.CS.score ++;
+				CopterController.CS.IncreaseScore();
+
 
 			}
 		}

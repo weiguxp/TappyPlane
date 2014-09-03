@@ -129,9 +129,15 @@ public class CopterController : MonoBehaviour
 	{
 		if (currentState == GameState.play) {
 						Instantiate (rocks);
-						DisplayScore ();
+
 				}
 	}
+
+	public void IncreaseScore()
+		{	
+			score ++;
+			DisplayScore ();
+		}
 
 	void DisplayScore()
 	{
