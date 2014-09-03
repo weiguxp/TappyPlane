@@ -1,5 +1,8 @@
 ﻿using UnityEngine;
+using System.Collections;
 
+
+[RequireComponent(typeof(AudioSource))]
 public class CopterController : MonoBehaviour
 {
 	public  enum GameState
@@ -28,6 +31,8 @@ public class CopterController : MonoBehaviour
 	public GameObject ChopperObject;
 	public GameObject FinalScoreLabel;
 	public GameObject PlayStateScorePanel;
+	public GameObject BGsoundObject;
+	public AudioClip ImpactSound;
 
 
 
@@ -102,6 +107,8 @@ public class CopterController : MonoBehaviour
 	
 	public void Die()
 	{
+		BGsoundObject.SetActive(false);
+		audio.PlayOneShot(ImpactSound);
 
 //		ChopperObject.rigidbody2D.isKinematic = true;
 		ChopperObject.rigidbody2D.velocity = new Vector2 (0, -20f);
