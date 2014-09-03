@@ -1,4 +1,7 @@
 ﻿using UnityEngine;
+using System;
+using System.Collections;
+
 
 public class Obstacle : MonoBehaviour
 {
@@ -9,6 +12,11 @@ public class Obstacle : MonoBehaviour
 	void Start()
 	{
 		rigidbody2D.velocity = velocity;
-		transform.position = new Vector3(transform.position.x, transform.position.y - range * Random.value, transform.position.z);
+		transform.position = new Vector3(transform.position.x, transform.position.y - range * UnityEngine.Random.value, transform.position.z);
+
+		Destroy(gameObject,5);
+
 	}
+
+
 }

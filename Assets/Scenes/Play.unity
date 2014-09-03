@@ -152,97 +152,69 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 6
---- !u!1 &789392945
+  m_RootOrder: 5
+--- !u!1 &345763624
 GameObject:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
   serializedVersion: 4
   m_Component:
-  - 4: {fileID: 789392948}
-  - 114: {fileID: 789392947}
-  - 114: {fileID: 789392946}
+  - 4: {fileID: 345763626}
+  - 212: {fileID: 345763625}
+  - 114: {fileID: 345763627}
   m_Layer: 0
-  m_Name: GA_HeatMap
+  m_Name: GameObject
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &789392946
-MonoBehaviour:
+--- !u!212 &345763625
+SpriteRenderer:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 789392945}
+  m_GameObject: {fileID: 345763624}
   m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: abadccb1abd4c4aa8a771cb23b956581, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  AvailableTypes:
-  - Design
-  - Quality
-  - Business
-  CurrentTypeIndex: 0
-  AvailableBuilds: []
-  CurrentBuildIndex: 0
-  RedownloadDataOnPlay: 0
-  IgnoreDates: 1
-  IgnoreBuilds: 1
-  DownloadingData: 0
-  BuildingHeatmap: 0
-  BuildHeatmapPercentage: 0
-  _startDateTime: 8/31/2014 12:53:35 AM
-  _endDateTime: 8/31/2014 12:53:35 AM
-  AvailableAreas: []
-  CurrentAreaIndex: 0
-  AvailableEvents: []
-  CurrentEventFlag: 
-  DataContainer: {fileID: 0}
-  didInit: 1
-  LoadProgress: 0
-  Loading: 0
---- !u!114 &789392947
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_PrefabParentObject: {fileID: 0}
-  m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 789392945}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: a1e56c1c33369d6479740ccd373e90d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  CurrentRenderModel: 1
-  MinColor: {r: 1, g: .921568632, b: .0156862754, a: 1}
-  MaxColor: {r: 1, g: 0, b: 0, a: 1}
-  RangeMin: 0
-  RangeMax: 1
-  MaxRadius: 1
-  ShowValueLabels: 0
-  Histogram:
-    min: Infinity
-    max: 0
-    RealDataMin: 0
-    RealDataMax: 0
-    Data: []
-  HistogramScale: 0
-  datafilter: {fileID: 789392946}
-  BillBoard: {fileID: 0}
---- !u!4 &789392948
+  m_CastShadows: 0
+  m_ReceiveShadows: 0
+  m_LightmapIndex: 255
+  m_LightmapTilingOffset: {x: 1, y: 1, z: 0, w: 0}
+  m_Materials:
+  - {fileID: 10754, guid: 0000000000000000e000000000000000, type: 0}
+  m_SubsetIndices: 
+  m_StaticBatchRoot: {fileID: 0}
+  m_UseLightProbes: 0
+  m_LightProbeAnchor: {fileID: 0}
+  m_ScaleInLightmap: 1
+  m_SortingLayerID: 0
+  m_SortingOrder: 0
+  m_Sprite: {fileID: 21300000, guid: 0729c6d69e6458344955bcf206ff0985, type: 3}
+  m_Color: {r: 1, g: 1, b: 1, a: 1}
+--- !u!4 &345763626
 Transform:
   m_ObjectHideFlags: 0
   m_PrefabParentObject: {fileID: 0}
   m_PrefabInternal: {fileID: 0}
-  m_GameObject: {fileID: 789392945}
+  m_GameObject: {fileID: 345763624}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: -3.77115965, y: -3.93791342, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
-  m_RootOrder: 5
+  m_RootOrder: 6
+--- !u!114 &345763627
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_PrefabParentObject: {fileID: 0}
+  m_PrefabInternal: {fileID: 0}
+  m_GameObject: {fileID: 345763624}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 23215fa76cdb7904abe52319a30579a5, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &890154642
 GameObject:
   m_ObjectHideFlags: 0
@@ -308,7 +280,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1083826557
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -348,7 +320,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1120566592
 AudioSource:
   m_ObjectHideFlags: 0
@@ -438,7 +410,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!114 &1430739538
 MonoBehaviour:
   m_ObjectHideFlags: 0
