@@ -226,7 +226,7 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 3223273445
+  m_SortingLayerID: 0
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: a2a5c34243478c743b0aa3acca7cd18c, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
@@ -248,7 +248,7 @@ SpriteRenderer:
   m_UseLightProbes: 0
   m_LightProbeAnchor: {fileID: 0}
   m_ScaleInLightmap: 1
-  m_SortingLayerID: 3223273445
+  m_SortingLayerID: 1452664321
   m_SortingOrder: 0
   m_Sprite: {fileID: 21300000, guid: 9682e5853cf4d564fa052cdd17c45add, type: 3}
   m_Color: {r: 1, g: 1, b: 1, a: 1}
