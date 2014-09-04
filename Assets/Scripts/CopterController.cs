@@ -5,45 +5,51 @@ using System.Collections;
 [RequireComponent(typeof(AudioSource))]
 public class CopterController : MonoBehaviour
 {
+	// Direction enumerator
 	public  enum GameState
 	{
 		initiate,
 		play,
 		playerdeath,
 	}
-	
 	public GameState currentState;
 	public static CopterController CS;
-	// The force which is added when the player jumps
-	// This can be changed in the Inspector window
-	public Vector2 jumpForcel = new Vector2(0, 300);
-	public Vector2 jumpForcer = new Vector2(0, 300);
-	private float rightVelocity = 0.1f ;
-	private float leftVelocity = -0.1f ;
-	private bool directionRight = true;
-	private float playerAcceleration = 0.4f;
-	private float playerMinVelocity = 1.5f;
 	public GameObject GameOverPanel;
 	public GameObject rocks;
 	public GameObject currentScore;
-	public int score = 0;
 	public GameObject [] AllRockPairs;
 	public GameObject ChopperObject;
 	public GameObject FinalScoreLabel;
 	public GameObject PlayStateScorePanel;
 	public GameObject BGsoundObject;
 	public AudioClip ImpactSound;
+	public AudioClip ScoreSoundObject;
+	public GameObject BestScoreLabel;
 
 
 
-	// Direction enumerator
+	private int bestScore=0;
+	public int score = 0;
+	private float playerAcceleration = 0.4f;
+	private float playerMinVelocity = 1.5f;
+	private float rightVelocity = 0.1f ;
+	private float leftVelocity = -0.1f ;
+	public Vector2 jumpForcel = new Vector2(0, 300);
+	public Vector2 jumpForcer = new Vector2(0, 300);
+	private bool directionRight = true;
+
 
 
 	void Start()
 	{
+
 		CS = this;
 //		DontDestroyOnLoad(this);
 		currentState = GameState.play;
+
+		//Grabs the high score from PlayerPref
+		bestScore = PlayerPrefs.GetInt ("bestScore");
+		Debug.Log ("BestScore:" + bestScore.ToString ());
 
 		InvokeRepeating("CreateObstacle", 1f, 1.5f);
 	}
@@ -52,34 +58,37 @@ public class CopterController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
+ 
 
+		//Code for the Play state of game
 		if (currentState == GameState.play){
-		CopterMomentum (directionRight);
+			CopterMomentum (directionRight);
 
-		//Spacebar controls direction
-		if (Input.GetMouseButtonDown (0)) {
-				if (directionRight == true) {
+			//Spacebar controls direction
+			if (Input.GetMouseButtonDown (0)) {
+				if (directionRight == true) 
+				{
+
+						//rotate the object 
+						ChopperObject.rigidbody2D.rotation = -20f;	
 						directionRight = false;
-						if (leftVelocity > -playerMinVelocity) {
-								leftVelocity = -2f;
-						}
+						if (leftVelocity > -playerMinVelocity) { leftVelocity = -2f; }
 				} else {
+				ChopperObject.rigidbody2D.rotation = -10f;	
 						directionRight = true;
-						if (rightVelocity < playerMinVelocity) {
-								rightVelocity = 2f;
-						}
+						if (rightVelocity < playerMinVelocity) {rightVelocity = 2f;}
 				}
 
-		}
+			}
 
-		// Die by being off screen
-//		Vector2 screenPosition = Camera.main.WorldToScreenPoint (transform.position);
-//		if (screenPosition.y > Screen.height || screenPosition.y < 0) {
-//						Die ();
-//				}
-			if (ChopperObject.rigidbody2D.position.y > 6f || ChopperObject.rigidbody2D.position.y < -6f) {
-							Die ();
-					}
+				// Die by being off screen
+		//		Vector2 screenPosition = Camera.main.WorldToScreenPoint (transform.position);
+		//		if (screenPosition.y > Screen.height || screenPosition.y < 0) {
+		//						Die ();
+	//				}
+				if (ChopperObject.rigidbody2D.position.y > 6f || ChopperObject.rigidbody2D.position.y < -6f) {
+								Die ();
+						}
 		}
 	}
 
@@ -107,12 +116,14 @@ public class CopterController : MonoBehaviour
 	
 	public void Die()
 	{
+		currentState = GameState.playerdeath;
 		BGsoundObject.SetActive(false);
 		audio.PlayOneShot(ImpactSound);
 
 //		ChopperObject.rigidbody2D.isKinematic = true;
 		ChopperObject.rigidbody2D.velocity = new Vector2 (0, -20f);
 
+// 		Stops all Rock Pairs	
 		AllRockPairs = GameObject.FindGameObjectsWithTag ("RockPair");
 		foreach (GameObject allRockPair in AllRockPairs)
 		{
@@ -120,7 +131,20 @@ public class CopterController : MonoBehaviour
 		}
 
 
-		currentState = GameState.playerdeath;
+//		Saves the best score
+		if (score > bestScore) {
+			Debug.Log("New High Score");
+			bestScore = score;
+			PlayerPrefs.SetInt ("bestScore", bestScore);
+
+		}
+
+//Shows the Best score
+		UILabel e = BestScoreLabel.GetComponent<UILabel>();
+		e.text = bestScore.ToString();
+
+
+//		Opens the Game Over panel
 		NGUITools.SetActive (GameOverPanel, true);
 		NGUITools.SetActive (PlayStateScorePanel, false);
 		UILabel d = FinalScoreLabel.GetComponent<UILabel>();
@@ -149,8 +173,9 @@ public class CopterController : MonoBehaviour
 
 	public void IncreaseScore()
 		{	
-			score ++;
-			DisplayScore ();
+		score ++;
+		DisplayScore ();
+		audio.PlayOneShot (ScoreSoundObject);
 		}
 
 	void DisplayScore()
