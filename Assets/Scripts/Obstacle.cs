@@ -24,7 +24,7 @@ public class Obstacle : MonoBehaviour
 	{
 		if (obstaclePassed == false) 
 		{
-			if (rigidbody2D.position.x < -14.80)
+			if (rigidbody2D.position.x < -15.88)
 			{
 //				Debug.Log(rigidbody2D.position.x);
 				obstaclePassed = true;
