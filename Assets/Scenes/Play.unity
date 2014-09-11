@@ -601,7 +601,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 716142712}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: -2, y: -50.5999985, z: 0}
+  m_LocalPosition: {x: -2.00019836, y: -50.6000023, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 771819335}
@@ -610,7 +610,7 @@ Transform:
   - {fileID: 1568316663}
   - {fileID: 562739080}
   m_Father: {fileID: 1393011975}
-  m_RootOrder: 3
+  m_RootOrder: 0
 --- !u!54 &716142714
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -666,7 +666,7 @@ MonoBehaviour:
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}
   mClipSoftness: {x: 4, y: 4}
-  mDepth: 3
+  mDepth: 2
   mSortingOrder: 0
   mClipOffset: {x: 0, y: 0}
 --- !u!114 &716142716
@@ -762,7 +762,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!54 &750651495
 Rigidbody:
   m_ObjectHideFlags: 0
@@ -936,11 +936,11 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 800929615}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: -29, z: 0}
+  m_LocalPosition: {x: 11, y: -14, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1393011975}
-  m_RootOrder: 0
+  m_RootOrder: 1
 --- !u!114 &800929617
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1009,13 +1009,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 1, g: 1, b: 1, a: 1}
   mPivot: 4
-  mWidth: 918
-  mHeight: 770
-  mDepth: 2
+  mWidth: 1408
+  mHeight: 800
+  mDepth: 4
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 1.19220781
+  aspectRatio: 1.75999999
   mType: 1
   mFillDirection: 4
   mFillAmount: 1
@@ -1157,7 +1157,7 @@ Transform:
   m_Children:
   - {fileID: 370567349}
   m_Father: {fileID: 1393011975}
-  m_RootOrder: 1
+  m_RootOrder: 2
 --- !u!114 &850637131
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -1378,6 +1378,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   currentState: 0
   GameOverPanel: {fileID: 1393011974}
+  AudioSourceClip: {fileID: 1120566591}
+  StartPanel: {fileID: 1070374609}
   rocks: {fileID: 100000, guid: 884eaa95353bbe24db00b30596f7a359, type: 2}
   currentScore: {fileID: 2065877950}
   AllRockPairs: []
@@ -1477,7 +1479,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1070374610
 Transform:
   m_ObjectHideFlags: 0
@@ -1544,7 +1546,7 @@ MonoBehaviour:
   alwaysOnScreen: 0
   anchorOffset: 0
   renderQueue: 0
-  startingRenderQueue: 3001
+  startingRenderQueue: 3000
   mAlpha: 1
   mClipping: 0
   mClipRange: {x: 0, y: 0, z: 300, w: 200}
@@ -1715,7 +1717,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!82 &1120566592
 AudioSource:
   m_ObjectHideFlags: 0
@@ -1967,7 +1969,7 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1393011975}
-  m_RootOrder: 2
+  m_RootOrder: 3
 --- !u!114 &1368929742
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2072,10 +2074,10 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 716142713}
   - {fileID: 800929616}
   - {fileID: 850637130}
   - {fileID: 1368929741}
-  - {fileID: 716142713}
   m_Father: {fileID: 1085583395}
   m_RootOrder: 1
 --- !u!54 &1393011976
@@ -2198,7 +2200,7 @@ Transform:
   m_GameObject: {fileID: 1430739537}
   m_LocalRotation: {x: 0, y: 0, z: -.129141748, w: .991626143}
   m_LocalPosition: {x: -4.41065216, y: .278741032, z: 0}
-  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_LocalScale: {x: 1.5, y: 1.5, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
   m_RootOrder: 3
@@ -2596,19 +2598,19 @@ MonoBehaviour:
     m_Curve:
     - time: 0
       value: 0
-      inSlope: 2
-      outSlope: 2
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     - time: 1
       value: 1
-      inSlope: 0
-      outSlope: 0
-      tangentMode: 0
+      inSlope: 1
+      outSlope: 1
+      tangentMode: 10
     m_PreInfinity: 2
     m_PostInfinity: 2
   ignoreTimeScale: 1
   delay: 0
-  duration: .5
+  duration: .300000012
   steeperCurves: 0
   tweenGroup: 0
   onFinished: []
@@ -2668,7 +2670,7 @@ MonoBehaviour:
   mEffectDistance: {x: 1, y: 1}
   mOverflow: 0
   mMaterial: {fileID: 0}
-  mApplyGradient: 1
+  mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: .699999988, g: .699999988, b: .699999988, a: 1}
   mSpacingX: 0
@@ -2771,7 +2773,7 @@ Transform:
   m_PrefabInternal: {fileID: 0}
   m_GameObject: {fileID: 1835360576}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 16, y: -6, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 1070374610}
@@ -2844,13 +2846,13 @@ MonoBehaviour:
   updateAnchors: 1
   mColor: {r: 0, g: 0, b: 0, a: 1}
   mPivot: 4
-  mWidth: 1408
-  mHeight: 988
+  mWidth: 1436
+  mHeight: 764
   mDepth: 0
   autoResizeBoxCollider: 0
   hideIfOffScreen: 0
   keepAspectRatio: 0
-  aspectRatio: 1.42510116
+  aspectRatio: 1.87958109
   mType: 1
   mFillDirection: 4
   mFillAmount: 1
@@ -2944,7 +2946,7 @@ MonoBehaviour:
   mEffectDistance: {x: 2.8599999, y: 2.52999997}
   mOverflow: 0
   mMaterial: {fileID: 0}
-  mApplyGradient: 1
+  mApplyGradient: 0
   mGradientTop: {r: 1, g: 1, b: 1, a: 1}
   mGradientBottom: {r: .699999988, g: .699999988, b: .699999988, a: 1}
   mSpacingX: 0

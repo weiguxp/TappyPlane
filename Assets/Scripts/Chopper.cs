@@ -16,6 +16,6 @@ public class Chopper : MonoBehaviour {
 	void OnCollisionEnter2D(Collision2D other)
 	{
 		// Tell the controller that user is dead
-		CopterController.CS.Die();
+		CopterController.CS.ChangeGameState(CopterController.GameState.playerdeath);
 	}
 }

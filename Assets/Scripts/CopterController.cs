@@ -15,6 +15,8 @@ public class CopterController : MonoBehaviour
 	public GameState currentState;
 	public static CopterController CS;
 	public GameObject GameOverPanel;
+	public GameObject AudioSourceClip;
+	public GameObject StartPanel;
 	public GameObject rocks;
 	public GameObject currentScore;
 	public GameObject [] AllRockPairs;
@@ -45,7 +47,7 @@ public class CopterController : MonoBehaviour
 
 		CS = this;
 //		DontDestroyOnLoad(this);
-		currentState = GameState.play;
+		currentState = GameState.initiate;
 
 		//Grabs the high score from PlayerPref
 		bestScore = PlayerPrefs.GetInt ("bestScore");
@@ -58,7 +60,11 @@ public class CopterController : MonoBehaviour
 	// Update is called once per frame
 	void Update ()
 	{
- 
+		if (currentState == GameState.initiate) {
+						if (Input.GetMouseButtonDown (0)) {
+								ChangeGameState (GameState.play);
+						}
+				}
 
 		//Code for the Play state of game
 		if (currentState == GameState.play){
@@ -87,7 +93,7 @@ public class CopterController : MonoBehaviour
 		//						Die ();
 	//				}
 				if (ChopperObject.rigidbody2D.position.y > 6f || ChopperObject.rigidbody2D.position.y < -6f) {
-								Die ();
+								ChangeGameState (GameState.playerdeath);
 						}
 		}
 	}
@@ -114,41 +120,49 @@ public class CopterController : MonoBehaviour
 		}
 
 	
-	public void Die()
+	public void ChangeGameState(GameState newState)
 	{
-		currentState = GameState.playerdeath;
-		BGsoundObject.SetActive(false);
-		audio.PlayOneShot(ImpactSound);
+		currentState = newState;
+
+		if (newState == GameState.play) {
+			NGUITools.SetActive(PlayStateScorePanel,true);
+			NGUITools.SetActive(StartPanel,false);
+			AudioSourceClip.SetActive(true);
+				}
+
+		if (newState == GameState.playerdeath) {
+						BGsoundObject.SetActive (false);
+						audio.PlayOneShot (ImpactSound);
 
 //		ChopperObject.rigidbody2D.isKinematic = true;
-		ChopperObject.rigidbody2D.velocity = new Vector2 (0, -20f);
+						ChopperObject.rigidbody2D.velocity = new Vector2 (0, -20f);
 
 // 		Stops all Rock Pairs	
-		AllRockPairs = GameObject.FindGameObjectsWithTag ("RockPair");
-		foreach (GameObject allRockPair in AllRockPairs)
-		{
-			allRockPair.rigidbody2D.velocity = new Vector2(0,0);
-		}
+						AllRockPairs = GameObject.FindGameObjectsWithTag ("RockPair");
+						foreach (GameObject allRockPair in AllRockPairs) {
+								allRockPair.rigidbody2D.velocity = new Vector2 (0, 0);
+						}
 
 
 //		Saves the best score
-		if (score > bestScore) {
-			Debug.Log("New High Score");
-			bestScore = score;
-			PlayerPrefs.SetInt ("bestScore", bestScore);
+						if (score > bestScore) {
+								Debug.Log ("New High Score");
+								bestScore = score;
+								PlayerPrefs.SetInt ("bestScore", bestScore);
 
-		}
+						}
 
 //Shows the Best score
-		UILabel e = BestScoreLabel.GetComponent<UILabel>();
-		e.text = bestScore.ToString();
+						UILabel e = BestScoreLabel.GetComponent<UILabel> ();
+						e.text = bestScore.ToString ();
 
 
 //		Opens the Game Over panel
-		NGUITools.SetActive (GameOverPanel, true);
-		NGUITools.SetActive (PlayStateScorePanel, false);
-		UILabel d = FinalScoreLabel.GetComponent<UILabel>();
-		d.text = score.ToString();
+						NGUITools.SetActive (GameOverPanel, true);
+						NGUITools.SetActive (PlayStateScorePanel, false);
+						UILabel d = FinalScoreLabel.GetComponent<UILabel> ();
+						d.text = score.ToString ();
+				}
 	}
 
 	public void GameRestart()
